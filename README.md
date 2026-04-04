@@ -196,6 +196,11 @@ This project is prepared for multiple deployment styles:
 - GitHub Pages (workflow included)
 - container hosting (for Cloud Run and similar platforms)
 
+Included GitHub Actions workflows:
+
+- `.github/workflows/ci.yml` - runs lint and production build on push/PR.
+- `.github/workflows/deploy-gh-pages.yml` - deploys `dist/` to GitHub Pages from `main`.
+
 ### 1. Generic Static Hosting (Recommended Default)
 
 Build locally:
@@ -242,6 +247,14 @@ If your repository is a user/organization site (served at root), change workflow
 ```yaml
 VITE_BASE_PATH: /
 ```
+
+### 3.1 GitHub Actions CI Requirements
+
+1. Ensure GitHub Actions is enabled for the repository.
+2. Keep `package-lock.json` committed (required for `npm ci`).
+3. Optionally add branch protection that requires the `CI` workflow to pass before merging.
+
+No repository secrets are required for current CI/build/deploy workflows.
 
 ### 4. GCP Static Hosting (Cloud Storage + CDN)
 
