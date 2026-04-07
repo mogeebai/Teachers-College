@@ -74,7 +74,7 @@ export default function Features() {
             className="lg:col-span-4"
           >
             <div
-              className="relative h-full min-h-[420px] lg:min-h-[500px] bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden"
+              className="relative h-full min-h-[420px] lg:min-h-[500px] bg-white border border-gray-100 rounded-[2rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
@@ -105,14 +105,14 @@ export default function Features() {
                         exit={{ opacity: 0, y: offset * 135, scale: 0.9 }}
                         transition={{ duration: 0.4, ease: 'easeOut' }}
                         style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
-                        className={`absolute w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] text-left p-4 rounded-2xl shadow-sm border transition-colors duration-300 transform-gpu ${
+                        className={`absolute w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] text-left p-3 md:p-4 rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] border transition-colors duration-300 transform-gpu ${
                           isActive
-                            ? 'border-yellow-500 bg-yellow-100 shadow-md shadow-yellow-500/20'
+                            ? 'border-yellow-500 bg-yellow-100 shadow-[0_20px_50px_-12px_rgba(234,179,8,0.25)]'
                             : 'border-gray-100 bg-white hover:bg-gray-50'
                         }`}
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-navy/5 text-navy rounded-xl flex items-center justify-center flex-shrink-0">
+                          <div className="w-11 h-11 md:w-12 md:h-12 bg-navy/5 text-navy rounded-2xl flex items-center justify-center flex-shrink-0">
                             <Icon size={26} />
                           </div>
                           <div>
@@ -136,7 +136,7 @@ export default function Features() {
             viewport={{ once: true }}
             className="lg:col-span-8"
           >
-            <div className="h-full bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden">
+            <div className="h-full bg-white border border-gray-100 rounded-[2rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] p-2 sm:p-3">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedFeature.id}
@@ -144,22 +144,21 @@ export default function Features() {
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, y: -12, filter: 'blur(4px)' }}
                   transition={{ duration: 0.35 }}
-                  className="h-full flex flex-col"
+                  className="h-full rounded-[1.5rem] flex flex-col md:flex-row gap-4 md:gap-6 items-stretch"
                 >
-                  <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                  <div className="relative w-full md:w-[270px] lg:w-[320px] h-56 sm:h-64 md:h-auto md:min-h-[360px] rounded-[1.5rem] overflow-hidden flex-shrink-0">
                     <img src={selectedFeature.image} alt={selectedFeature.title} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/20 to-transparent"></div>
-                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/90 text-navy text-xs sm:text-sm font-semibold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/90 text-navy text-xs sm:text-sm font-semibold px-3 py-1 rounded-xl shadow-sm">
                       Teaching Method
                     </div>
                   </div>
 
-                
-                  <div className="p-5 sm:p-6 md:p-8 flex-1">
+                  <div className="flex-1 flex flex-col justify-center p-3 sm:p-4 md:py-6 md:pr-6 md:pl-0">
                     <h3 className="text-2xl md:text-3xl font-bold text-navy mb-3">{selectedFeature.title}</h3>
                     <p className="text-base md:text-lg text-navy/80 leading-relaxed mb-5">{selectedFeature.details}</p>
 
-                    <div className="space-y-2">
+                    <div className="border-t border-gray-100 pt-4 mt-1 space-y-2">
                       {selectedFeature.highlights.map((item) => (
                         <div key={item} className="flex items-start gap-3">
                           <span className="mt-2 w-2 h-2 rounded-full bg-red flex-shrink-0"></span>
